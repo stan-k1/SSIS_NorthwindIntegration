@@ -5,6 +5,11 @@ VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "IntegrationExperiment", "IntegrationExperiment\IntegrationExperiment.dtproj", "{EC7BFCAB-BCB6-407D-A8AF-188AA2A99C1F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL Scripts Reference", "SQL Scripts Reference", "{78551B95-C61A-497A-A8EB-A953EAC29C22}"
+	ProjectSection(SolutionItems) = preProject
+		ProcutName_SCD_Type1.sql = ProcutName_SCD_Type1.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Development|Default = Development|Default
