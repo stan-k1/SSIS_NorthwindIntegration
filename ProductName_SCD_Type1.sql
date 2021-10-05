@@ -1,7 +1,7 @@
 ﻿-- Type 1 SCD Merge Script For ProductName Column in Product/DimProduct 
 
 MERGE DimProduct AS target
-	USING IntergrationDimProduct as source
+	USING IntegrationDimProduct as source
 	ON target.ProductId = source.ProductId
  WHEN MATCHED
  AND source.ProductName <> target.ProductName
@@ -36,5 +36,7 @@ MERGE DimProduct AS target
       ,source.[CategoryName]
       ,source.[Description]
    )
-WHEN NOT MATCHED BY Source THEN
+WHEN NOT MATCHED BY Source
+AND target.ProductID NOT IN (SELECT ProductID From Northwind.dbo.Products)
+THEN
 UPDATE SET Target.EndDate= CAST(GetDate() AS Date);

@@ -11,8 +11,8 @@
   DTS:LocaleID="1032"
   DTS:ObjectName="DimProduct"
   DTS:PackageType="5"
-  DTS:VersionBuild="24"
-  DTS:VersionGUID="{2C712D46-0982-4D56-9A1F-1DAE50408DD4}">
+  DTS:VersionBuild="54"
+  DTS:VersionGUID="{963CE818-56D8-4C4E-8920-45CD5491F949}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -44,30 +44,13 @@
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Create Database"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{DBC73DA0-500A-4DCB-AABD-5B2942361323}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Create Database"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{1EDF4981-35B4-431D-A94A-035CBDCD1074}"
-          SQLTask:SqlStatementSource="IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'IntegrationNW')&#xA;BEGIN&#xA;  CREATE DATABASE  IntegrationNW&#xA;END&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Data Flow Task"
+      DTS:refId="Package\ELT Data Flow"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{E5FE0B56-3AFA-4767-912B-FBD08AABBB73}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Data Flow Task"
+      DTS:ObjectName="ELT Data Flow"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -75,7 +58,7 @@
           version="1">
           <components>
             <component
-              refId="Package\Data Flow Task\Categoires"
+              refId="Package\ELT Data Flow\Categoires"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
@@ -124,7 +107,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Categoires.Connections[OleDbConnection]"
+                  refId="Package\ELT Data Flow\Categoires.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[localhost.Northwind]"
                   connectionManagerRefId="Package.ConnectionManagers[localhost.Northwind]"
                   description="The OLE DB runtime connection used to access the database."
@@ -132,104 +115,104 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output]"
+                  refId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].Columns[CategoryID]"
+                      refId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].Columns[CategoryID]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].ExternalColumns[CategoryID]"
-                      lineageId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].Columns[CategoryID]"
+                      externalMetadataColumnId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].ExternalColumns[CategoryID]"
+                      lineageId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].Columns[CategoryID]"
                       name="CategoryID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].Columns[CategoryName]"
+                      refId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].Columns[CategoryName]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].ExternalColumns[CategoryName]"
+                      externalMetadataColumnId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].ExternalColumns[CategoryName]"
                       length="15"
-                      lineageId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].Columns[CategoryName]"
+                      lineageId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].Columns[CategoryName]"
                       name="CategoryName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].Columns[Description]"
+                      refId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].Columns[Description]"
                       dataType="nText"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].ExternalColumns[Description]"
-                      lineageId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].Columns[Description]"
+                      externalMetadataColumnId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                      lineageId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].Columns[Description]"
                       name="Description"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].Columns[Picture]"
+                      refId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].Columns[Picture]"
                       dataType="image"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].ExternalColumns[Picture]"
-                      lineageId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].Columns[Picture]"
+                      externalMetadataColumnId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].ExternalColumns[Picture]"
+                      lineageId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].Columns[Picture]"
                       name="Picture"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].ExternalColumns[CategoryID]"
+                      refId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].ExternalColumns[CategoryID]"
                       dataType="i4"
                       name="CategoryID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].ExternalColumns[CategoryName]"
+                      refId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].ExternalColumns[CategoryName]"
                       dataType="wstr"
                       length="15"
                       name="CategoryName" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                      refId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].ExternalColumns[Description]"
                       dataType="nText"
                       name="Description" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].ExternalColumns[Picture]"
+                      refId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].ExternalColumns[Picture]"
                       dataType="image"
                       name="Picture" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Error Output]"
+                  refId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Error Output].Columns[CategoryID]"
+                      refId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Error Output].Columns[CategoryID]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Error Output].Columns[CategoryID]"
+                      lineageId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Error Output].Columns[CategoryID]"
                       name="CategoryID" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Error Output].Columns[CategoryName]"
+                      refId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Error Output].Columns[CategoryName]"
                       dataType="wstr"
                       length="15"
-                      lineageId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Error Output].Columns[CategoryName]"
+                      lineageId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Error Output].Columns[CategoryName]"
                       name="CategoryName" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Error Output].Columns[Description]"
+                      refId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Error Output].Columns[Description]"
                       dataType="nText"
-                      lineageId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Error Output].Columns[Description]"
+                      lineageId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Error Output].Columns[Description]"
                       name="Description" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Error Output].Columns[Picture]"
+                      refId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Error Output].Columns[Picture]"
                       dataType="image"
-                      lineageId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Error Output].Columns[Picture]"
+                      lineageId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Error Output].Columns[Picture]"
                       name="Picture" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -238,7 +221,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\DimProduct"
+              refId="Package\ELT Data Flow\DimProduct"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
@@ -295,7 +278,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\DimProduct.Connections[OleDbConnection]"
+                  refId="Package\ELT Data Flow\DimProduct.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[localhost.IntegrationNW]"
                   connectionManagerRefId="Package.ConnectionManagers[localhost.IntegrationNW]"
                   description="The OLE DB runtime connection used to access the database."
@@ -303,148 +286,148 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input]"
+                  refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].Columns[ProductID]"
                       cachedDataType="i4"
                       cachedName="ProductID"
-                      externalMetadataColumnId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[ProductID]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[ProductID]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].Columns[CategoryName]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].Columns[CategoryName]"
                       cachedDataType="wstr"
                       cachedLength="15"
                       cachedName="CategoryName"
-                      externalMetadataColumnId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[CategoryName]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[CategoryName]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[CategoryName]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[CategoryName]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].Columns[ProductName]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].Columns[ProductName]"
                       cachedDataType="wstr"
                       cachedLength="40"
                       cachedName="ProductName"
-                      externalMetadataColumnId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[ProductName]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[ProductName]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].Columns[SupplierID]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].Columns[SupplierID]"
                       cachedDataType="i4"
                       cachedName="SupplierID"
-                      externalMetadataColumnId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[SupplierID]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[SupplierID]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[SupplierID]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[SupplierID]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].Columns[QuantityPerUnit]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].Columns[QuantityPerUnit]"
                       cachedDataType="wstr"
                       cachedLength="20"
                       cachedName="QuantityPerUnit"
-                      externalMetadataColumnId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[QuantityPerUnit]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[QuantityPerUnit]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[QuantityPerUnit]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[QuantityPerUnit]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].Columns[UnitPrice]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].Columns[UnitPrice]"
                       cachedDataType="cy"
                       cachedName="UnitPrice"
-                      externalMetadataColumnId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[UnitPrice]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[UnitPrice]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].Columns[UnitsInStock]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].Columns[UnitsInStock]"
                       cachedDataType="i2"
                       cachedName="UnitsInStock"
-                      externalMetadataColumnId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitsInStock]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[UnitsInStock]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitsInStock]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[UnitsInStock]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].Columns[UnitsOnOrder]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].Columns[UnitsOnOrder]"
                       cachedDataType="i2"
                       cachedName="UnitsOnOrder"
-                      externalMetadataColumnId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitsOnOrder]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[UnitsOnOrder]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitsOnOrder]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[UnitsOnOrder]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].Columns[ReorderLevel]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].Columns[ReorderLevel]"
                       cachedDataType="i2"
                       cachedName="ReorderLevel"
-                      externalMetadataColumnId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ReorderLevel]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[ReorderLevel]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ReorderLevel]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[ReorderLevel]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].Columns[Discontinued]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].Columns[Discontinued]"
                       cachedDataType="bool"
                       cachedName="Discontinued"
-                      externalMetadataColumnId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[Discontinued]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Discontinued]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[Discontinued]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[Discontinued]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].Columns[Description]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].Columns[Description]"
                       cachedDataType="nText"
                       cachedName="Description"
-                      externalMetadataColumnId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[CategoryDescription]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Description]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[CategoryDescription]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[Description]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].Columns[CategoryID]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].Columns[CategoryID]"
                       cachedDataType="i4"
                       cachedName="CategoryID"
                       cachedSortKeyPosition="1"
-                      externalMetadataColumnId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[CategoryID]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[CategoryID]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
                       dataType="i4"
                       name="ProductID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
                       dataType="wstr"
                       length="40"
                       name="ProductName" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[SupplierID]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[SupplierID]"
                       dataType="i4"
                       name="SupplierID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
                       dataType="i4"
                       name="CategoryID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[QuantityPerUnit]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[QuantityPerUnit]"
                       dataType="wstr"
                       length="20"
                       name="QuantityPerUnit" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
                       dataType="cy"
                       name="UnitPrice" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitsInStock]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitsInStock]"
                       dataType="i2"
                       name="UnitsInStock" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitsOnOrder]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitsOnOrder]"
                       dataType="i2"
                       name="UnitsOnOrder" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ReorderLevel]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ReorderLevel]"
                       dataType="i2"
                       name="ReorderLevel" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[Discontinued]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[Discontinued]"
                       dataType="bool"
                       name="Discontinued" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[CategoryName]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[CategoryName]"
                       dataType="wstr"
                       length="15"
                       name="CategoryName" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[CategoryDescription]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[CategoryDescription]"
                       dataType="nText"
                       name="CategoryDescription" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
                       dataType="dbDate"
                       name="StartDate" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[EndDate]"
+                      refId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[EndDate]"
                       dataType="dbDate"
                       name="EndDate" />
                   </externalMetadataColumns>
@@ -452,22 +435,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\DimProduct.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\ELT Data Flow\DimProduct.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\DimProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\ELT Data Flow\DimProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\DimProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\ELT Data Flow\DimProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\DimProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\ELT Data Flow\DimProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\DimProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\ELT Data Flow\DimProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -476,7 +459,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Integration for DimProduct"
+              refId="Package\ELT Data Flow\Integration for DimProduct"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
@@ -491,7 +474,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[IntergrationDimProduct]</property>
+                  name="OpenRowset">[dbo].[IntegrationDimProduct]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -533,7 +516,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Integration for DimProduct.Connections[OleDbConnection]"
+                  refId="Package\ELT Data Flow\Integration for DimProduct.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[localhost.IntegrationNW]"
                   connectionManagerRefId="Package.ConnectionManagers[localhost.IntegrationNW]"
                   description="The OLE DB runtime connection used to access the database."
@@ -541,148 +524,148 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input]"
+                  refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[ProductID]"
                       cachedDataType="i4"
                       cachedName="ProductID"
-                      externalMetadataColumnId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[ProductID]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[ProductID]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[ProductName]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[ProductName]"
                       cachedDataType="wstr"
                       cachedLength="40"
                       cachedName="ProductName"
-                      externalMetadataColumnId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[ProductName]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[ProductName]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[SupplierID]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[SupplierID]"
                       cachedDataType="i4"
                       cachedName="SupplierID"
-                      externalMetadataColumnId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[SupplierID]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[SupplierID]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[SupplierID]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[SupplierID]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[CategoryID]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[CategoryID]"
                       cachedDataType="i4"
                       cachedName="CategoryID"
                       cachedSortKeyPosition="1"
-                      externalMetadataColumnId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[CategoryID]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[CategoryID]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[QuantityPerUnit]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[QuantityPerUnit]"
                       cachedDataType="wstr"
                       cachedLength="20"
                       cachedName="QuantityPerUnit"
-                      externalMetadataColumnId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[QuantityPerUnit]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[QuantityPerUnit]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[QuantityPerUnit]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[QuantityPerUnit]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[UnitPrice]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[UnitPrice]"
                       cachedDataType="cy"
                       cachedName="UnitPrice"
-                      externalMetadataColumnId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[UnitPrice]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[UnitPrice]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[UnitsInStock]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[UnitsInStock]"
                       cachedDataType="i2"
                       cachedName="UnitsInStock"
-                      externalMetadataColumnId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitsInStock]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[UnitsInStock]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitsInStock]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[UnitsInStock]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[UnitsOnOrder]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[UnitsOnOrder]"
                       cachedDataType="i2"
                       cachedName="UnitsOnOrder"
-                      externalMetadataColumnId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitsOnOrder]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[UnitsOnOrder]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitsOnOrder]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[UnitsOnOrder]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[ReorderLevel]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[ReorderLevel]"
                       cachedDataType="i2"
                       cachedName="ReorderLevel"
-                      externalMetadataColumnId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ReorderLevel]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[ReorderLevel]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ReorderLevel]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[ReorderLevel]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[Discontinued]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[Discontinued]"
                       cachedDataType="bool"
                       cachedName="Discontinued"
-                      externalMetadataColumnId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[Discontinued]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Discontinued]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[Discontinued]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[Discontinued]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[CategoryName]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[CategoryName]"
                       cachedDataType="wstr"
                       cachedLength="15"
                       cachedName="CategoryName"
-                      externalMetadataColumnId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[CategoryName]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[CategoryName]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[CategoryName]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[CategoryName]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[Description]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].Columns[Description]"
                       cachedDataType="nText"
                       cachedName="Description"
-                      externalMetadataColumnId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Description]" />
+                      externalMetadataColumnId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[Description]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
                       dataType="i4"
                       name="ProductID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
                       dataType="wstr"
                       length="40"
                       name="ProductName" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[SupplierID]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[SupplierID]"
                       dataType="i4"
                       name="SupplierID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
                       dataType="i4"
                       name="CategoryID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[QuantityPerUnit]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[QuantityPerUnit]"
                       dataType="wstr"
                       length="20"
                       name="QuantityPerUnit" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
                       dataType="cy"
                       name="UnitPrice" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitsInStock]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitsInStock]"
                       dataType="i2"
                       name="UnitsInStock" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitsOnOrder]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[UnitsOnOrder]"
                       dataType="i2"
                       name="UnitsOnOrder" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ReorderLevel]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ReorderLevel]"
                       dataType="i2"
                       name="ReorderLevel" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[Discontinued]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[Discontinued]"
                       dataType="bool"
                       name="Discontinued" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[CategoryName]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[CategoryName]"
                       dataType="wstr"
                       length="15"
                       name="CategoryName" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
                       dataType="nText"
                       name="Description" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
                       dataType="dbDate"
                       name="StartDate" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[EndDate]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[EndDate]"
                       dataType="dbDate"
                       name="EndDate" />
                   </externalMetadataColumns>
@@ -690,22 +673,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Integration for DimProduct.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\ELT Data Flow\Integration for DimProduct.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Integration for DimProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\ELT Data Flow\Integration for DimProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Integration for DimProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\ELT Data Flow\Integration for DimProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Integration for DimProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\ELT Data Flow\Integration for DimProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -714,7 +697,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Lookup"
+              refId="Package\ELT Data Flow\Lookup"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
@@ -770,7 +753,7 @@ where [refTable].[ProductID] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[ProductID]};</property>
+                  name="ParameterMap">#{Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[ProductID]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -782,7 +765,7 @@ where [refTable].[ProductID] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Lookup.Connections[OleDbConnection]"
+                  refId="Package\ELT Data Flow\Lookup.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[localhost.IntegrationNW]"
                   connectionManagerRefId="Package.ConnectionManagers[localhost.IntegrationNW]"
                   description="Connection manager used to access lookup data."
@@ -790,14 +773,14 @@ where [refTable].[ProductID] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]"
+                  refId="Package\ELT Data Flow\Lookup.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Lookup.Inputs[Lookup Input].Columns[ProductID]"
+                      refId="Package\ELT Data Flow\Lookup.Inputs[Lookup Input].Columns[ProductID]"
                       cachedDataType="i4"
                       cachedName="ProductID"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[ProductID]">
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[ProductID]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -815,17 +798,17 @@ where [refTable].[ProductID] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output]"
+                  refId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\ELT Data Flow\Lookup.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[ProductID]"
+                      refId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[ProductID]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[ProductID]"
+                      lineageId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[ProductID]"
                       name="ProductID"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -836,11 +819,11 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[ProductName]"
+                      refId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[ProductName]"
                       dataType="wstr"
                       errorOrTruncationOperation="Copy Column"
                       length="40"
-                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[ProductName]"
+                      lineageId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[ProductName]"
                       name="ProductName"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -851,10 +834,10 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[SupplierID]"
+                      refId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[SupplierID]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[SupplierID]"
+                      lineageId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[SupplierID]"
                       name="SupplierID"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -865,10 +848,10 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[CategoryID]"
+                      refId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[CategoryID]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[CategoryID]"
+                      lineageId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[CategoryID]"
                       name="CategoryID"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -879,11 +862,11 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[QuantityPerUnit]"
+                      refId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[QuantityPerUnit]"
                       dataType="wstr"
                       errorOrTruncationOperation="Copy Column"
                       length="20"
-                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[QuantityPerUnit]"
+                      lineageId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[QuantityPerUnit]"
                       name="QuantityPerUnit"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -894,10 +877,10 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[UnitPrice]"
+                      refId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[UnitPrice]"
                       dataType="cy"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[UnitPrice]"
+                      lineageId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[UnitPrice]"
                       name="UnitPrice"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -908,10 +891,10 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[UnitsInStock]"
+                      refId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[UnitsInStock]"
                       dataType="i2"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[UnitsInStock]"
+                      lineageId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[UnitsInStock]"
                       name="UnitsInStock"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -922,10 +905,10 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[UnitsOnOrder]"
+                      refId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[UnitsOnOrder]"
                       dataType="i2"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[UnitsOnOrder]"
+                      lineageId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[UnitsOnOrder]"
                       name="UnitsOnOrder"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -936,10 +919,10 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[ReorderLevel]"
+                      refId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[ReorderLevel]"
                       dataType="i2"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[ReorderLevel]"
+                      lineageId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[ReorderLevel]"
                       name="ReorderLevel"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -950,10 +933,10 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[Discontinued]"
+                      refId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[Discontinued]"
                       dataType="bool"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[Discontinued]"
+                      lineageId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[Discontinued]"
                       name="Discontinued"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -964,11 +947,11 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[CategoryName]"
+                      refId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[CategoryName]"
                       dataType="wstr"
                       errorOrTruncationOperation="Copy Column"
                       length="15"
-                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[CategoryName]"
+                      lineageId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[CategoryName]"
                       name="CategoryName"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -979,10 +962,10 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[Description]"
+                      refId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[Description]"
                       dataType="nText"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[Description]"
+                      lineageId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output].Columns[Description]"
                       name="Description"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -996,30 +979,30 @@ where [refTable].[ProductID] = ?</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Lookup.Outputs[Lookup No Match Output]"
+                  refId="Package\ELT Data Flow\Lookup.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\ELT Data Flow\Lookup.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output]"
+                  refId="Package\ELT Data Flow\Lookup.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\ELT Data Flow\Lookup.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\ELT Data Flow\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\ELT Data Flow\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\ELT Data Flow\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\ELT Data Flow\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1028,7 +1011,7 @@ where [refTable].[ProductID] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Merge Join"
+              refId="Package\ELT Data Flow\Merge Join"
               componentClassID="Microsoft.MergeJoin"
               contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
@@ -1055,147 +1038,147 @@ where [refTable].[ProductID] = ?</property>
               </properties>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input]"
+                  refId="Package\ELT Data Flow\Merge Join.Inputs[Merge Join Left Input]"
                   hasSideEffects="true"
                   name="Merge Join Left Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[CategoryID]"
+                      refId="Package\ELT Data Flow\Merge Join.Inputs[Merge Join Left Input].Columns[CategoryID]"
                       cachedDataType="i4"
                       cachedName="CategoryID"
                       cachedSortKeyPosition="1"
-                      lineageId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[CategoryID]" />
+                      lineageId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[CategoryID]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[ProductID]"
+                      refId="Package\ELT Data Flow\Merge Join.Inputs[Merge Join Left Input].Columns[ProductID]"
                       cachedDataType="i4"
                       cachedName="ProductID"
-                      lineageId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[ProductID]" />
+                      lineageId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[ProductID]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[ProductName]"
+                      refId="Package\ELT Data Flow\Merge Join.Inputs[Merge Join Left Input].Columns[ProductName]"
                       cachedDataType="wstr"
                       cachedLength="40"
                       cachedName="ProductName"
-                      lineageId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[ProductName]" />
+                      lineageId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[ProductName]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[SupplierID]"
+                      refId="Package\ELT Data Flow\Merge Join.Inputs[Merge Join Left Input].Columns[SupplierID]"
                       cachedDataType="i4"
                       cachedName="SupplierID"
-                      lineageId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[SupplierID]" />
+                      lineageId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[SupplierID]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[QuantityPerUnit]"
+                      refId="Package\ELT Data Flow\Merge Join.Inputs[Merge Join Left Input].Columns[QuantityPerUnit]"
                       cachedDataType="wstr"
                       cachedLength="20"
                       cachedName="QuantityPerUnit"
-                      lineageId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[QuantityPerUnit]" />
+                      lineageId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[QuantityPerUnit]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[UnitPrice]"
+                      refId="Package\ELT Data Flow\Merge Join.Inputs[Merge Join Left Input].Columns[UnitPrice]"
                       cachedDataType="cy"
                       cachedName="UnitPrice"
-                      lineageId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[UnitPrice]" />
+                      lineageId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[UnitPrice]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[UnitsInStock]"
+                      refId="Package\ELT Data Flow\Merge Join.Inputs[Merge Join Left Input].Columns[UnitsInStock]"
                       cachedDataType="i2"
                       cachedName="UnitsInStock"
-                      lineageId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[UnitsInStock]" />
+                      lineageId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[UnitsInStock]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[UnitsOnOrder]"
+                      refId="Package\ELT Data Flow\Merge Join.Inputs[Merge Join Left Input].Columns[UnitsOnOrder]"
                       cachedDataType="i2"
                       cachedName="UnitsOnOrder"
-                      lineageId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[UnitsOnOrder]" />
+                      lineageId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[UnitsOnOrder]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[ReorderLevel]"
+                      refId="Package\ELT Data Flow\Merge Join.Inputs[Merge Join Left Input].Columns[ReorderLevel]"
                       cachedDataType="i2"
                       cachedName="ReorderLevel"
-                      lineageId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[ReorderLevel]" />
+                      lineageId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[ReorderLevel]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[Discontinued]"
+                      refId="Package\ELT Data Flow\Merge Join.Inputs[Merge Join Left Input].Columns[Discontinued]"
                       cachedDataType="bool"
                       cachedName="Discontinued"
-                      lineageId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[Discontinued]" />
+                      lineageId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[Discontinued]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
                 <input
-                  refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input]"
+                  refId="Package\ELT Data Flow\Merge Join.Inputs[Merge Join Right Input]"
                   hasSideEffects="true"
                   name="Merge Join Right Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[CategoryID]"
+                      refId="Package\ELT Data Flow\Merge Join.Inputs[Merge Join Right Input].Columns[CategoryID]"
                       cachedDataType="i4"
                       cachedName="CategoryID"
                       cachedSortKeyPosition="1"
-                      lineageId="Package\Data Flow Task\Sort Categories.Outputs[Sort Output].Columns[CategoryID]" />
+                      lineageId="Package\ELT Data Flow\Sort Categories.Outputs[Sort Output].Columns[CategoryID]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[CategoryName]"
+                      refId="Package\ELT Data Flow\Merge Join.Inputs[Merge Join Right Input].Columns[CategoryName]"
                       cachedDataType="wstr"
                       cachedLength="15"
                       cachedName="CategoryName"
-                      lineageId="Package\Data Flow Task\Sort Categories.Outputs[Sort Output].Columns[CategoryName]" />
+                      lineageId="Package\ELT Data Flow\Sort Categories.Outputs[Sort Output].Columns[CategoryName]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[Description]"
+                      refId="Package\ELT Data Flow\Merge Join.Inputs[Merge Join Right Input].Columns[Description]"
                       cachedDataType="nText"
                       cachedName="Description"
-                      lineageId="Package\Data Flow Task\Sort Categories.Outputs[Sort Output].Columns[Description]" />
+                      lineageId="Package\ELT Data Flow\Sort Categories.Outputs[Sort Output].Columns[Description]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[Picture]"
+                      refId="Package\ELT Data Flow\Merge Join.Inputs[Merge Join Right Input].Columns[Picture]"
                       cachedDataType="image"
                       cachedName="Picture"
-                      lineageId="Package\Data Flow Task\Sort Categories.Outputs[Sort Output].Columns[Picture]" />
+                      lineageId="Package\ELT Data Flow\Sort Categories.Outputs[Sort Output].Columns[Picture]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output]"
+                  refId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output]"
                   isSorted="true"
                   name="Merge Join Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[ProductID]"
+                      refId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[ProductID]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[ProductID]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[ProductID]"
                       name="ProductID">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[ProductID]}</property>
+                          name="InputColumnID">#{Package\ELT Data Flow\Merge Join.Inputs[Merge Join Left Input].Columns[ProductID]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[ProductName]"
+                      refId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[ProductName]"
                       dataType="wstr"
                       length="40"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[ProductName]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[ProductName]"
                       name="ProductName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[ProductName]}</property>
+                          name="InputColumnID">#{Package\ELT Data Flow\Merge Join.Inputs[Merge Join Left Input].Columns[ProductName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[SupplierID]"
+                      refId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[SupplierID]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[SupplierID]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[SupplierID]"
                       name="SupplierID">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[SupplierID]}</property>
+                          name="InputColumnID">#{Package\ELT Data Flow\Merge Join.Inputs[Merge Join Left Input].Columns[SupplierID]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[CategoryID]"
+                      refId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[CategoryID]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[CategoryID]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[CategoryID]"
                       name="CategoryID"
                       sortKeyPosition="1">
                       <properties>
@@ -1203,126 +1186,126 @@ where [refTable].[ProductID] = ?</property>
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[CategoryID]}</property>
+                          name="InputColumnID">#{Package\ELT Data Flow\Merge Join.Inputs[Merge Join Left Input].Columns[CategoryID]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[QuantityPerUnit]"
+                      refId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[QuantityPerUnit]"
                       dataType="wstr"
                       length="20"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[QuantityPerUnit]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[QuantityPerUnit]"
                       name="QuantityPerUnit">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[QuantityPerUnit]}</property>
+                          name="InputColumnID">#{Package\ELT Data Flow\Merge Join.Inputs[Merge Join Left Input].Columns[QuantityPerUnit]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[UnitPrice]"
+                      refId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[UnitPrice]"
                       dataType="cy"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[UnitPrice]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[UnitPrice]"
                       name="UnitPrice">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[UnitPrice]}</property>
+                          name="InputColumnID">#{Package\ELT Data Flow\Merge Join.Inputs[Merge Join Left Input].Columns[UnitPrice]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[UnitsInStock]"
+                      refId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[UnitsInStock]"
                       dataType="i2"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[UnitsInStock]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[UnitsInStock]"
                       name="UnitsInStock">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[UnitsInStock]}</property>
+                          name="InputColumnID">#{Package\ELT Data Flow\Merge Join.Inputs[Merge Join Left Input].Columns[UnitsInStock]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[UnitsOnOrder]"
+                      refId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[UnitsOnOrder]"
                       dataType="i2"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[UnitsOnOrder]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[UnitsOnOrder]"
                       name="UnitsOnOrder">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[UnitsOnOrder]}</property>
+                          name="InputColumnID">#{Package\ELT Data Flow\Merge Join.Inputs[Merge Join Left Input].Columns[UnitsOnOrder]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[ReorderLevel]"
+                      refId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[ReorderLevel]"
                       dataType="i2"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[ReorderLevel]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[ReorderLevel]"
                       name="ReorderLevel">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[ReorderLevel]}</property>
+                          name="InputColumnID">#{Package\ELT Data Flow\Merge Join.Inputs[Merge Join Left Input].Columns[ReorderLevel]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Discontinued]"
+                      refId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[Discontinued]"
                       dataType="bool"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Discontinued]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[Discontinued]"
                       name="Discontinued">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[Discontinued]}</property>
+                          name="InputColumnID">#{Package\ELT Data Flow\Merge Join.Inputs[Merge Join Left Input].Columns[Discontinued]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[CategoryName]"
+                      refId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[CategoryName]"
                       dataType="wstr"
                       length="15"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[CategoryName]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[CategoryName]"
                       name="CategoryName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[CategoryName]}</property>
+                          name="InputColumnID">#{Package\ELT Data Flow\Merge Join.Inputs[Merge Join Right Input].Columns[CategoryName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Description]"
+                      refId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[Description]"
                       dataType="nText"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Description]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[Description]"
                       name="Description">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[Description]}</property>
+                          name="InputColumnID">#{Package\ELT Data Flow\Merge Join.Inputs[Merge Join Right Input].Columns[Description]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Picture]"
+                      refId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[Picture]"
                       dataType="image"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Picture]"
+                      lineageId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output].Columns[Picture]"
                       name="Picture">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[Picture]}</property>
+                          name="InputColumnID">#{Package\ELT Data Flow\Merge Join.Inputs[Merge Join Right Input].Columns[Picture]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -1331,7 +1314,7 @@ where [refTable].[ProductID] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Products"
+              refId="Package\ELT Data Flow\Products"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
@@ -1380,7 +1363,7 @@ where [refTable].[ProductID] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Products.Connections[OleDbConnection]"
+                  refId="Package\ELT Data Flow\Products.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[localhost.Northwind]"
                   connectionManagerRefId="Package.ConnectionManagers[localhost.Northwind]"
                   description="The OLE DB runtime connection used to access the database."
@@ -1388,215 +1371,215 @@ where [refTable].[ProductID] = ?</property>
               </connections>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output]"
+                  refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[ProductID]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      externalMetadataColumnId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[ProductID]"
                       name="ProductID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[ProductName]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                      externalMetadataColumnId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
                       length="40"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[ProductName]"
                       name="ProductName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[SupplierID]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[SupplierID]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].ExternalColumns[SupplierID]"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[SupplierID]"
+                      externalMetadataColumnId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].ExternalColumns[SupplierID]"
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[SupplierID]"
                       name="SupplierID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[CategoryID]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[CategoryID]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].ExternalColumns[CategoryID]"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[CategoryID]"
+                      externalMetadataColumnId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].ExternalColumns[CategoryID]"
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[CategoryID]"
                       name="CategoryID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[QuantityPerUnit]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[QuantityPerUnit]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].ExternalColumns[QuantityPerUnit]"
+                      externalMetadataColumnId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].ExternalColumns[QuantityPerUnit]"
                       length="20"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[QuantityPerUnit]"
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[QuantityPerUnit]"
                       name="QuantityPerUnit"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[UnitPrice]"
                       dataType="cy"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      externalMetadataColumnId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[UnitPrice]"
                       name="UnitPrice"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[UnitsInStock]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[UnitsInStock]"
                       dataType="i2"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].ExternalColumns[UnitsInStock]"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[UnitsInStock]"
+                      externalMetadataColumnId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].ExternalColumns[UnitsInStock]"
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[UnitsInStock]"
                       name="UnitsInStock"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[UnitsOnOrder]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[UnitsOnOrder]"
                       dataType="i2"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].ExternalColumns[UnitsOnOrder]"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[UnitsOnOrder]"
+                      externalMetadataColumnId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].ExternalColumns[UnitsOnOrder]"
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[UnitsOnOrder]"
                       name="UnitsOnOrder"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[ReorderLevel]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[ReorderLevel]"
                       dataType="i2"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].ExternalColumns[ReorderLevel]"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[ReorderLevel]"
+                      externalMetadataColumnId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].ExternalColumns[ReorderLevel]"
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[ReorderLevel]"
                       name="ReorderLevel"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[Discontinued]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[Discontinued]"
                       dataType="bool"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].ExternalColumns[Discontinued]"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[Discontinued]"
+                      externalMetadataColumnId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].ExternalColumns[Discontinued]"
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[Discontinued]"
                       name="Discontinued"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
                       dataType="i4"
                       name="ProductID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
                       dataType="wstr"
                       length="40"
                       name="ProductName" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].ExternalColumns[SupplierID]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].ExternalColumns[SupplierID]"
                       dataType="i4"
                       name="SupplierID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].ExternalColumns[CategoryID]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].ExternalColumns[CategoryID]"
                       dataType="i4"
                       name="CategoryID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].ExternalColumns[QuantityPerUnit]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].ExternalColumns[QuantityPerUnit]"
                       dataType="wstr"
                       length="20"
                       name="QuantityPerUnit" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
                       dataType="cy"
                       name="UnitPrice" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].ExternalColumns[UnitsInStock]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].ExternalColumns[UnitsInStock]"
                       dataType="i2"
                       name="UnitsInStock" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].ExternalColumns[UnitsOnOrder]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].ExternalColumns[UnitsOnOrder]"
                       dataType="i2"
                       name="UnitsOnOrder" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].ExternalColumns[ReorderLevel]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].ExternalColumns[ReorderLevel]"
                       dataType="i2"
                       name="ReorderLevel" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].ExternalColumns[Discontinued]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].ExternalColumns[Discontinued]"
                       dataType="bool"
                       name="Discontinued" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output]"
+                  refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[ProductID]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[ProductID]"
                       name="ProductID" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[ProductName]"
                       dataType="wstr"
                       length="40"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[ProductName]"
                       name="ProductName" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[SupplierID]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[SupplierID]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[SupplierID]"
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[SupplierID]"
                       name="SupplierID" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[CategoryID]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[CategoryID]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[CategoryID]"
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[CategoryID]"
                       name="CategoryID" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[QuantityPerUnit]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[QuantityPerUnit]"
                       dataType="wstr"
                       length="20"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[QuantityPerUnit]"
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[QuantityPerUnit]"
                       name="QuantityPerUnit" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
                       dataType="cy"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
                       name="UnitPrice" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[UnitsInStock]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[UnitsInStock]"
                       dataType="i2"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[UnitsInStock]"
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[UnitsInStock]"
                       name="UnitsInStock" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[UnitsOnOrder]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[UnitsOnOrder]"
                       dataType="i2"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[UnitsOnOrder]"
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[UnitsOnOrder]"
                       name="UnitsOnOrder" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[ReorderLevel]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[ReorderLevel]"
                       dataType="i2"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[ReorderLevel]"
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[ReorderLevel]"
                       name="ReorderLevel" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[Discontinued]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[Discontinued]"
                       dataType="bool"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[Discontinued]"
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[Discontinued]"
                       name="Discontinued" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1605,7 +1588,7 @@ where [refTable].[ProductID] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Sort Categories"
+              refId="Package\ELT Data Flow\Sort Categories"
               componentClassID="Microsoft.Sort"
               contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
@@ -1624,14 +1607,14 @@ where [refTable].[ProductID] = ?</property>
               </properties>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Sort Categories.Inputs[Sort Input]"
+                  refId="Package\ELT Data Flow\Sort Categories.Inputs[Sort Input]"
                   name="Sort Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Sort Categories.Inputs[Sort Input].Columns[CategoryID]"
+                      refId="Package\ELT Data Flow\Sort Categories.Inputs[Sort Input].Columns[CategoryID]"
                       cachedDataType="i4"
                       cachedName="CategoryID"
-                      lineageId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].Columns[CategoryID]">
+                      lineageId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].Columns[CategoryID]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1644,11 +1627,11 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Sort Categories.Inputs[Sort Input].Columns[CategoryName]"
+                      refId="Package\ELT Data Flow\Sort Categories.Inputs[Sort Input].Columns[CategoryName]"
                       cachedDataType="wstr"
                       cachedLength="15"
                       cachedName="CategoryName"
-                      lineageId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].Columns[CategoryName]">
+                      lineageId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].Columns[CategoryName]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1661,10 +1644,10 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Sort Categories.Inputs[Sort Input].Columns[Description]"
+                      refId="Package\ELT Data Flow\Sort Categories.Inputs[Sort Input].Columns[Description]"
                       cachedDataType="nText"
                       cachedName="Description"
-                      lineageId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].Columns[Description]">
+                      lineageId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].Columns[Description]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1677,10 +1660,10 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Sort Categories.Inputs[Sort Input].Columns[Picture]"
+                      refId="Package\ELT Data Flow\Sort Categories.Inputs[Sort Input].Columns[Picture]"
                       cachedDataType="image"
                       cachedName="Picture"
-                      lineageId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].Columns[Picture]">
+                      lineageId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].Columns[Picture]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1698,14 +1681,14 @@ where [refTable].[ProductID] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Sort Categories.Outputs[Sort Output]"
+                  refId="Package\ELT Data Flow\Sort Categories.Outputs[Sort Output]"
                   isSorted="true"
                   name="Sort Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Sort Categories.Outputs[Sort Output].Columns[CategoryID]"
+                      refId="Package\ELT Data Flow\Sort Categories.Outputs[Sort Output].Columns[CategoryID]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Sort Categories.Outputs[Sort Output].Columns[CategoryID]"
+                      lineageId="Package\ELT Data Flow\Sort Categories.Outputs[Sort Output].Columns[CategoryID]"
                       name="CategoryID"
                       sortKeyPosition="1">
                       <properties>
@@ -1713,47 +1696,47 @@ where [refTable].[ProductID] = ?</property>
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].Columns[CategoryID]}</property>
+                          name="SortColumnId">#{Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].Columns[CategoryID]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Sort Categories.Outputs[Sort Output].Columns[CategoryName]"
+                      refId="Package\ELT Data Flow\Sort Categories.Outputs[Sort Output].Columns[CategoryName]"
                       dataType="wstr"
                       length="15"
-                      lineageId="Package\Data Flow Task\Sort Categories.Outputs[Sort Output].Columns[CategoryName]"
+                      lineageId="Package\ELT Data Flow\Sort Categories.Outputs[Sort Output].Columns[CategoryName]"
                       name="CategoryName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].Columns[CategoryName]}</property>
+                          name="SortColumnId">#{Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].Columns[CategoryName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Sort Categories.Outputs[Sort Output].Columns[Description]"
+                      refId="Package\ELT Data Flow\Sort Categories.Outputs[Sort Output].Columns[Description]"
                       dataType="nText"
-                      lineageId="Package\Data Flow Task\Sort Categories.Outputs[Sort Output].Columns[Description]"
+                      lineageId="Package\ELT Data Flow\Sort Categories.Outputs[Sort Output].Columns[Description]"
                       name="Description">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].Columns[Description]}</property>
+                          name="SortColumnId">#{Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].Columns[Description]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Sort Categories.Outputs[Sort Output].Columns[Picture]"
+                      refId="Package\ELT Data Flow\Sort Categories.Outputs[Sort Output].Columns[Picture]"
                       dataType="image"
-                      lineageId="Package\Data Flow Task\Sort Categories.Outputs[Sort Output].Columns[Picture]"
+                      lineageId="Package\ELT Data Flow\Sort Categories.Outputs[Sort Output].Columns[Picture]"
                       name="Picture">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output].Columns[Picture]}</property>
+                          name="SortColumnId">#{Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output].Columns[Picture]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -1762,7 +1745,7 @@ where [refTable].[ProductID] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Sort Products"
+              refId="Package\ELT Data Flow\Sort Products"
               componentClassID="Microsoft.Sort"
               contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
@@ -1781,14 +1764,14 @@ where [refTable].[ProductID] = ?</property>
               </properties>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Sort Products.Inputs[Sort Input]"
+                  refId="Package\ELT Data Flow\Sort Products.Inputs[Sort Input]"
                   name="Sort Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Sort Products.Inputs[Sort Input].Columns[ProductID]"
+                      refId="Package\ELT Data Flow\Sort Products.Inputs[Sort Input].Columns[ProductID]"
                       cachedDataType="i4"
                       cachedName="ProductID"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[ProductID]">
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[ProductID]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1801,11 +1784,11 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Sort Products.Inputs[Sort Input].Columns[ProductName]"
+                      refId="Package\ELT Data Flow\Sort Products.Inputs[Sort Input].Columns[ProductName]"
                       cachedDataType="wstr"
                       cachedLength="40"
                       cachedName="ProductName"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[ProductName]">
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[ProductName]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1818,10 +1801,10 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Sort Products.Inputs[Sort Input].Columns[SupplierID]"
+                      refId="Package\ELT Data Flow\Sort Products.Inputs[Sort Input].Columns[SupplierID]"
                       cachedDataType="i4"
                       cachedName="SupplierID"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[SupplierID]">
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[SupplierID]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1834,10 +1817,10 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Sort Products.Inputs[Sort Input].Columns[CategoryID]"
+                      refId="Package\ELT Data Flow\Sort Products.Inputs[Sort Input].Columns[CategoryID]"
                       cachedDataType="i4"
                       cachedName="CategoryID"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[CategoryID]">
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[CategoryID]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1850,11 +1833,11 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Sort Products.Inputs[Sort Input].Columns[QuantityPerUnit]"
+                      refId="Package\ELT Data Flow\Sort Products.Inputs[Sort Input].Columns[QuantityPerUnit]"
                       cachedDataType="wstr"
                       cachedLength="20"
                       cachedName="QuantityPerUnit"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[QuantityPerUnit]">
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[QuantityPerUnit]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1867,10 +1850,10 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Sort Products.Inputs[Sort Input].Columns[UnitPrice]"
+                      refId="Package\ELT Data Flow\Sort Products.Inputs[Sort Input].Columns[UnitPrice]"
                       cachedDataType="cy"
                       cachedName="UnitPrice"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[UnitPrice]">
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[UnitPrice]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1883,10 +1866,10 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Sort Products.Inputs[Sort Input].Columns[UnitsInStock]"
+                      refId="Package\ELT Data Flow\Sort Products.Inputs[Sort Input].Columns[UnitsInStock]"
                       cachedDataType="i2"
                       cachedName="UnitsInStock"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[UnitsInStock]">
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[UnitsInStock]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1899,10 +1882,10 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Sort Products.Inputs[Sort Input].Columns[UnitsOnOrder]"
+                      refId="Package\ELT Data Flow\Sort Products.Inputs[Sort Input].Columns[UnitsOnOrder]"
                       cachedDataType="i2"
                       cachedName="UnitsOnOrder"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[UnitsOnOrder]">
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[UnitsOnOrder]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1915,10 +1898,10 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Sort Products.Inputs[Sort Input].Columns[ReorderLevel]"
+                      refId="Package\ELT Data Flow\Sort Products.Inputs[Sort Input].Columns[ReorderLevel]"
                       cachedDataType="i2"
                       cachedName="ReorderLevel"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[ReorderLevel]">
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[ReorderLevel]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1931,10 +1914,10 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Sort Products.Inputs[Sort Input].Columns[Discontinued]"
+                      refId="Package\ELT Data Flow\Sort Products.Inputs[Sort Input].Columns[Discontinued]"
                       cachedDataType="bool"
                       cachedName="Discontinued"
-                      lineageId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[Discontinued]">
+                      lineageId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[Discontinued]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1952,54 +1935,54 @@ where [refTable].[ProductID] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Sort Products.Outputs[Sort Output]"
+                  refId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output]"
                   isSorted="true"
                   name="Sort Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[ProductID]"
+                      refId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[ProductID]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[ProductID]"
+                      lineageId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[ProductID]"
                       name="ProductID">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[ProductID]}</property>
+                          name="SortColumnId">#{Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[ProductID]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[ProductName]"
+                      refId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[ProductName]"
                       dataType="wstr"
                       length="40"
-                      lineageId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[ProductName]"
+                      lineageId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[ProductName]"
                       name="ProductName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[ProductName]}</property>
+                          name="SortColumnId">#{Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[ProductName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[SupplierID]"
+                      refId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[SupplierID]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[SupplierID]"
+                      lineageId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[SupplierID]"
                       name="SupplierID">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[SupplierID]}</property>
+                          name="SortColumnId">#{Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[SupplierID]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[CategoryID]"
+                      refId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[CategoryID]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[CategoryID]"
+                      lineageId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[CategoryID]"
                       name="CategoryID"
                       sortKeyPosition="1">
                       <properties>
@@ -2007,86 +1990,86 @@ where [refTable].[ProductID] = ?</property>
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[CategoryID]}</property>
+                          name="SortColumnId">#{Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[CategoryID]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[QuantityPerUnit]"
+                      refId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[QuantityPerUnit]"
                       dataType="wstr"
                       length="20"
-                      lineageId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[QuantityPerUnit]"
+                      lineageId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[QuantityPerUnit]"
                       name="QuantityPerUnit">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[QuantityPerUnit]}</property>
+                          name="SortColumnId">#{Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[QuantityPerUnit]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[UnitPrice]"
+                      refId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[UnitPrice]"
                       dataType="cy"
-                      lineageId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[UnitPrice]"
+                      lineageId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[UnitPrice]"
                       name="UnitPrice">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[UnitPrice]}</property>
+                          name="SortColumnId">#{Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[UnitPrice]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[UnitsInStock]"
+                      refId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[UnitsInStock]"
                       dataType="i2"
-                      lineageId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[UnitsInStock]"
+                      lineageId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[UnitsInStock]"
                       name="UnitsInStock">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[UnitsInStock]}</property>
+                          name="SortColumnId">#{Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[UnitsInStock]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[UnitsOnOrder]"
+                      refId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[UnitsOnOrder]"
                       dataType="i2"
-                      lineageId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[UnitsOnOrder]"
+                      lineageId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[UnitsOnOrder]"
                       name="UnitsOnOrder">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[UnitsOnOrder]}</property>
+                          name="SortColumnId">#{Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[UnitsOnOrder]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[ReorderLevel]"
+                      refId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[ReorderLevel]"
                       dataType="i2"
-                      lineageId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[ReorderLevel]"
+                      lineageId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[ReorderLevel]"
                       name="ReorderLevel">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[ReorderLevel]}</property>
+                          name="SortColumnId">#{Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[ReorderLevel]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[Discontinued]"
+                      refId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[Discontinued]"
                       dataType="bool"
-                      lineageId="Package\Data Flow Task\Sort Products.Outputs[Sort Output].Columns[Discontinued]"
+                      lineageId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output].Columns[Discontinued]"
                       name="Discontinued">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\Data Flow Task\Products.Outputs[OLE DB Source Output].Columns[Discontinued]}</property>
+                          name="SortColumnId">#{Package\ELT Data Flow\Products.Outputs[OLE DB Source Output].Columns[Discontinued]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -2097,40 +2080,40 @@ where [refTable].[ProductID] = ?</property>
           </components>
           <paths>
             <path
-              refId="Package\Data Flow Task.Paths[Lookup Match Output]"
-              endId="Package\Data Flow Task\Integration for DimProduct.Inputs[OLE DB Destination Input]"
+              refId="Package\ELT Data Flow.Paths[Lookup Match Output]"
+              endId="Package\ELT Data Flow\Integration for DimProduct.Inputs[OLE DB Destination Input]"
               name="Lookup Match Output"
-              startId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output]" />
+              startId="Package\ELT Data Flow\Lookup.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Lookup No Match Output]"
-              endId="Package\Data Flow Task\DimProduct.Inputs[OLE DB Destination Input]"
+              refId="Package\ELT Data Flow.Paths[Lookup No Match Output]"
+              endId="Package\ELT Data Flow\DimProduct.Inputs[OLE DB Destination Input]"
               name="Lookup No Match Output"
-              startId="Package\Data Flow Task\Lookup.Outputs[Lookup No Match Output]" />
+              startId="Package\ELT Data Flow\Lookup.Outputs[Lookup No Match Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Merge Join Output]"
-              endId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]"
+              refId="Package\ELT Data Flow.Paths[Merge Join Output]"
+              endId="Package\ELT Data Flow\Lookup.Inputs[Lookup Input]"
               name="Merge Join Output"
-              startId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output]" />
+              startId="Package\ELT Data Flow\Merge Join.Outputs[Merge Join Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
-              endId="Package\Data Flow Task\Sort Products.Inputs[Sort Input]"
+              refId="Package\ELT Data Flow.Paths[OLE DB Source Output]"
+              endId="Package\ELT Data Flow\Sort Products.Inputs[Sort Input]"
               name="OLE DB Source Output"
-              startId="Package\Data Flow Task\Products.Outputs[OLE DB Source Output]" />
+              startId="Package\ELT Data Flow\Products.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[OLE DB Source Output1]"
-              endId="Package\Data Flow Task\Sort Categories.Inputs[Sort Input]"
+              refId="Package\ELT Data Flow.Paths[OLE DB Source Output1]"
+              endId="Package\ELT Data Flow\Sort Categories.Inputs[Sort Input]"
               name="OLE DB Source Output"
-              startId="Package\Data Flow Task\Categoires.Outputs[OLE DB Source Output]" />
+              startId="Package\ELT Data Flow\Categoires.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Sort Output]"
-              endId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input]"
+              refId="Package\ELT Data Flow.Paths[Sort Output]"
+              endId="Package\ELT Data Flow\Merge Join.Inputs[Merge Join Left Input]"
               name="Sort Output"
-              startId="Package\Data Flow Task\Sort Products.Outputs[Sort Output]" />
+              startId="Package\ELT Data Flow\Sort Products.Outputs[Sort Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Sort Output1]"
-              endId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input]"
+              refId="Package\ELT Data Flow.Paths[Sort Output1]"
+              endId="Package\ELT Data Flow\Merge Join.Inputs[Merge Join Right Input]"
               name="Sort Output"
-              startId="Package\Data Flow Task\Sort Categories.Outputs[Sort Output]" />
+              startId="Package\ELT Data Flow\Sort Categories.Outputs[Sort Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -2149,7 +2132,7 @@ where [refTable].[ProductID] = ?</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{5FE70369-4464-4C85-9310-48876A323A39}"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE IntergrationDimProduct;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="TRUNCATE TABLE IntegrationDimProduct;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -2166,34 +2149,51 @@ where [refTable].[ProductID] = ?</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{5FE70369-4464-4C85-9310-48876A323A39}"
-          SQLTask:SqlStatementSource="MERGE DimProduct AS target&#xA;&#x9;USING IntergrationDimProduct as source&#xA;&#x9;ON target.ProductId = source.ProductId&#xA; WHEN MATCHED&#xA; AND source.ProductName &lt;&gt; target.ProductName&#xA; THEN UPDATE SET&#xA;&#x9; target.ProductName = source.ProductName&#xA; WHEN NOT MATCHED THEN&#xA;   INSERT  (&#xA;&#x9;  [ProductID]&#xA;      ,[ProductName]&#xA;      ,[SupplierID]&#xA;      ,[CategoryID]&#xA;      ,[QuantityPerUnit]&#xA;      ,[UnitPrice]&#xA;      ,[UnitsInStock]&#xA;      ,[UnitsOnOrder]&#xA;      ,[ReorderLevel]&#xA;      ,[Discontinued]&#xA;      ,[CategoryName]&#xA;      ,[CategoryDescription]&#xA;   )&#xA;   VALUES( &#xA;&#x9;  source.[ProductID]&#xA;      ,source.[ProductName]&#xA;      ,source.[SupplierID]&#xA;      ,source.[CategoryID]&#xA;      ,source.[QuantityPerUnit]&#xA;      ,source.[UnitPrice]&#xA;      ,source.[UnitsInStock]&#xA;      ,source.[UnitsOnOrder]&#xA;      ,source.[ReorderLevel]&#xA;      ,source.[Discontinued]&#xA;      ,source.[CategoryName]&#xA;      ,source.[Description]&#xA;   )&#xA;WHEN NOT MATCHED BY Source THEN&#xA;UPDATE SET Target.EndDate= CAST(GetDate() AS Date);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="MERGE DimProduct AS target&#xA;&#x9;USING IntegrationDimProduct as source&#xA;&#x9;ON target.ProductId = source.ProductId&#xA; WHEN MATCHED&#xA; AND source.ProductName &lt;&gt; target.ProductName&#xA; THEN UPDATE SET&#xA;&#x9; target.ProductName = source.ProductName&#xA; WHEN NOT MATCHED THEN&#xA;   INSERT  (&#xA;&#x9;  [ProductID]&#xA;      ,[ProductName]&#xA;      ,[SupplierID]&#xA;      ,[CategoryID]&#xA;      ,[QuantityPerUnit]&#xA;      ,[UnitPrice]&#xA;      ,[UnitsInStock]&#xA;      ,[UnitsOnOrder]&#xA;      ,[ReorderLevel]&#xA;      ,[Discontinued]&#xA;      ,[CategoryName]&#xA;      ,[CategoryDescription]&#xA;   )&#xA;   VALUES( &#xA;&#x9;  source.[ProductID]&#xA;      ,source.[ProductName]&#xA;      ,source.[SupplierID]&#xA;      ,source.[CategoryID]&#xA;      ,source.[QuantityPerUnit]&#xA;      ,source.[UnitPrice]&#xA;      ,source.[UnitsInStock]&#xA;      ,source.[UnitsOnOrder]&#xA;      ,source.[ReorderLevel]&#xA;      ,source.[Discontinued]&#xA;      ,source.[CategoryName]&#xA;      ,source.[Description]&#xA;   )&#xA;WHEN NOT MATCHED BY Source&#xA;AND target.ProductID NOT IN (SELECT ProductID From Northwind.dbo.Products)&#xA;THEN&#xA;UPDATE SET Target.EndDate= CAST(GetDate() AS Date);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update SCD (UnitPrice, Type 2)"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{014B8084-2B0B-438D-A8CF-A51DA751F13B}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update SCD (UnitPrice, Type 2)"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5FE70369-4464-4C85-9310-48876A323A39}"
+          SQLTask:SqlStatementSource="INSERT INTO Dimproduct ([ProductID],[ProductName],[SupplierID],[CategoryID],[QuantityPerUnit],[UnitPrice],&#xA;[UnitsInStock],[UnitsOnOrder],[ReorderLevel],[Discontinued],[CategoryName],[CategoryDescription],[StartDate],[EndDate])&#xA;SELECT [ProductID],[ProductName],[SupplierID],[CategoryID],[QuantityPerUnit],[UnitPrice],&#xA;[UnitsInStock],[UnitsOnOrder],[ReorderLevel],[Discontinued],[CategoryName],[Description],[StartDate],[EndDate]&#xA;FROM&#xA;(&#xA;MERGE DimProduct AS target&#xA;&#x9;USING IntegrationDimProduct as source&#xA;&#x9;ON target.ProductId = source.ProductId&#xA; WHEN MATCHED AND source.UnitPrice &lt;&gt; target.UnitPrice&#xA; AND target.EndDate IS NULL&#xA; THEN UPDATE SET&#xA;&#x9; target.EndDate=source.StartDate&#xA; WHEN NOT MATCHED BY Target THEN&#xA;   INSERT  (&#xA;&#x9;[ProductID],[ProductName],[SupplierID],[CategoryID],[QuantityPerUnit],[UnitPrice],&#xA;&#x9;[UnitsInStock],[UnitsOnOrder],[ReorderLevel],[Discontinued],[CategoryName],[CategoryDescription],[StartDate],[EndDate] &#xA;   )&#xA;   VALUES( &#xA;&#x9;source.[ProductID],source.[ProductName],source.[SupplierID],source.[CategoryID],source.[QuantityPerUnit],source.[UnitPrice],&#xA;&#x9;source.[UnitsInStock],source.[UnitsOnOrder],source.[ReorderLevel],source.[Discontinued],source.[CategoryName],source.[Description],source.[StartDate], source.[EndDate] &#xA;   )&#xA;OUTPUT &#xA;&#x9;source.[ProductID],source.[ProductName],source.[SupplierID],source.[CategoryID],source.[QuantityPerUnit],source.[UnitPrice],&#xA;&#x9;source.[UnitsInStock],source.[UnitsOnOrder],source.[ReorderLevel],source.[Discontinued],source.[CategoryName],source.[Description],source.[StartDate], source.[EndDate],&#xA;&#x9;$Action as ActionName&#xA;) AS Mrg&#xA;WHERE Mrg.ActionName='UPDATE'&#xA;AND ProductId IS NOT NULL" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint]"
-      DTS:CreationName=""
-      DTS:DTSID="{2F7A6B51-BFDF-47FE-AFD0-C54F4B1312EE}"
-      DTS:From="Package\Create Database"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint"
-      DTS:To="Package\Data Flow Task" />
-    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
       DTS:DTSID="{2E563194-3D35-490A-B7CE-5D30F0657493}"
-      DTS:From="Package\Data Flow Task"
+      DTS:From="Package\ELT Data Flow"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\Update SCD (ProductName, Type 1)" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{48BD4261-8F15-4178-ACC4-0B8DABD3CBC8}"
+      DTS:DTSID="{9385C669-1B1C-46DB-8263-FCB33CF72B20}"
       DTS:From="Package\Update SCD (ProductName, Type 1)"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Update SCD (UnitPrice, Type 2)" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{48C6B27C-D7FC-4B92-B403-A56E6FDB3EC5}"
+      DTS:From="Package\Update SCD (UnitPrice, Type 2)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
       DTS:To="Package\Truncate Integration Table" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
@@ -2209,27 +2209,23 @@ where [refTable].[ProductID] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="156,41.6"
-          Id="Package\Create Database"
-          TopLeft="409.285721255809,114.705883961648" />
-        <NodeLayout
-          Size="150.4,41.6"
-          Id="Package\Data Flow Task"
-          TopLeft="409.285721255809,204.941179344811" />
+          Size="146.4,41.6"
+          Id="Package\ELT Data Flow"
+          TopLeft="407.142864076459,157.529413973997" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="485.885721255809,156.305883961648">
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="477.528577881687,199.129413973997">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,48.635295383163"
+              EndConnector="0,58.5764719931727"
               Start="0,0"
-              End="0,41.135295383163">
+              End="0,51.0764719931727">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41.135295383163" />
+                    End="0,51.0764719931727" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2238,111 +2234,112 @@ where [refTable].[ProductID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="471.371434763013,395.658828494953">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.8117661000953"
+              Start="0,0"
+              End="0,50.3117661000953">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.3117661000953" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="472.885720319164,299.305885967169">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54.7529425277839"
+              Start="0,0"
+              End="0,47.2529425277839">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.2529425277839" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="226.4,41.6"
+          Id="Package\Update SCD (UnitPrice, Type 2)"
+          TopLeft="357.857148951414,354.058828494953" />
         <NodeLayout
           Size="248,41.6"
           Id="Package\Update SCD (ProductName, Type 1)"
-          TopLeft="352.857148866264,304.352945444906" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="480.671435061037,246.541179344811">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,57.8117661000949"
-              Start="0,0"
-              End="0,50.3117661000949">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,50.3117661000949" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="350.714291686914,257.705885967169" />
         <NodeLayout
           Size="204.8,41.6"
           Id="Package\Truncate Integration Table"
-          TopLeft="374.285720659762,399.176476186535" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="476.771434763013,345.952945444906">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,53.2235307416287"
-              Start="0,0"
-              End="0,45.7235307416287">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,45.7235307416287" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="369.285720574612,453.470594595048" />
+        <AnnotationLayout
+          Text="Don't forget to create the database and tables before running this package!&#xD;&#xA;See the SQL Scripts Reference folder for the creation script file."
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="428.8,60"
+          Id="35fe1bba-40e7-4161-9ccc-25e57965bc74"
+          TopLeft="573.571438339292,144.529413791676" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Data Flow Task">
+    design-time-name="Package\ELT Data Flow">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="119.2,41.6"
-          Id="Package\Data Flow Task\Products"
-          TopLeft="268.571433145173,78.7647069869982" />
-        <NodeLayout
-          Size="128,41.6"
-          Id="Package\Data Flow Task\Categoires"
-          TopLeft="650.714296795884,81.0588246662312" />
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="112.8,41.6"
-          Id="Package\Data Flow Task\Lookup"
-          TopLeft="473.571436636302,325.76471045108" />
+          Id="Package\ELT Data Flow\Lookup"
+          TopLeft="508.571437232348,325.76471045108" />
+        <NodeLayout
+          Size="132.8,41.6"
+          Id="Package\ELT Data Flow\DimProduct"
+          TopLeft="283.571433400621,422.882358871942" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\ELT Data Flow\Merge Join"
+          TopLeft="500.714294241399,234.764709174839" />
         <NodeLayout
           Size="141.6,41.6"
-          Id="Package\Data Flow Task\Sort Products"
-          TopLeft="256.428575795524,150.647060936298" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="327.700004470348,120.364706986998">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,30.2823539492993"
-              Start="0,0"
-              End="0,22.7823539492993">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,22.7823539492993" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Id="Package\ELT Data Flow\Sort Products"
+          TopLeft="291.42857639157,150.647060936298" />
+        <NodeLayout
+          Size="119.2,41.6"
+          Id="Package\ELT Data Flow\Products"
+          TopLeft="303.571433741219,78.7647069869982" />
+        <NodeLayout
+          Size="204.8,41.6"
+          Id="Package\ELT Data Flow\Integration for DimProduct"
+          TopLeft="664.285725598432,416.76471172732" />
+        <NodeLayout
+          Size="128,41.6"
+          Id="Package\ELT Data Flow\Categoires"
+          TopLeft="685.71429739193,81.0588246662312" />
         <NodeLayout
           Size="150.4,41.6"
-          Id="Package\Data Flow Task\Sort Categories"
-          TopLeft="630.714296455286,140.705884326288" />
+          Id="Package\ELT Data Flow\Sort Categories"
+          TopLeft="665.714297051332,140.705884326288" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output1]"
-          TopLeft="778.714296795884,101.858824666231">
+          Id="Package\ELT Data Flow.Paths[OLE DB Source Output1]"
+          TopLeft="813.71429739193,101.858824666231">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2374,40 +2371,20 @@ where [refTable].[ProductID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="132.8,41.6"
-          Id="Package\Data Flow Task\DimProduct"
-          TopLeft="248.571432804575,422.882358871942" />
-        <NodeLayout
-          Size="129.6,41.6"
-          Id="Package\Data Flow Task\Merge Join"
-          TopLeft="465.714293645353,234.764709174839" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Sort Output]"
-          TopLeft="327.228575795524,192.247060936298">
+          Id="Package\ELT Data Flow.Paths[OLE DB Source Output]"
+          TopLeft="362.700005066394,120.364706986998">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="203.285717849828,42.5176482385419"
+              EndConnector="0,30.2823539492993"
               Start="0,0"
-              End="203.285717849828,35.0176482385419">
+              End="0,22.7823539492993">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.2588241192709" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17.2588241192709"
-                    Point2="0,21.2588241192709"
-                    Point3="4,21.2588241192709" />
-                  <mssgle:LineSegment
-                    End="199.285717849828,21.2588241192709" />
-                  <mssgle:CubicBezierSegment
-                    Point1="199.285717849828,21.2588241192709"
-                    Point2="203.285717849828,21.2588241192709"
-                    Point3="203.285717849828,25.2588241192709" />
-                  <mssgle:LineSegment
-                    End="203.285717849828,35.0176482385419" />
+                    End="0,22.7823539492993" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2417,8 +2394,66 @@ where [refTable].[ProductID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Sort Output1]"
-          TopLeft="705.914296455286,182.305884326288">
+          Id="Package\ELT Data Flow.Paths[Merge Join Output]"
+          TopLeft="565.242865736873,276.364709174839">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.4000012762406"
+              Start="0,0"
+              End="0,41.9000012762406">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.9000012762406" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ELT Data Flow.Paths[Lookup No Match Output]"
+          TopLeft="547.504770565681,367.36471045108">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-197.533337165061,55.5176484208618"
+              Start="0,0"
+              End="-197.533337165061,48.0176484208618">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.6729417327156" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.6729417327156"
+                    Point2="0,22.6729417327156"
+                    Point3="-4,22.6729417327156" />
+                  <mssgle:LineSegment
+                    End="-193.533337165061,22.6729417327156" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-193.533337165061,22.6729417327156"
+                    Point2="-197.533337165061,22.6729417327156"
+                    Point3="-197.533337165061,26.6729417327156" />
+                  <mssgle:LineSegment
+                    End="-197.533337165061,48.0176484208618" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-154.573055301281,27.6729417327156,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ELT Data Flow.Paths[Sort Output1]"
+          TopLeft="740.914297051332,182.305884326288">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2451,19 +2486,31 @@ where [refTable].[ProductID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Merge Join Output]"
-          TopLeft="530.242865140827,276.364709174839">
+          Id="Package\ELT Data Flow.Paths[Sort Output]"
+          TopLeft="362.22857639157,192.247060936298">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,49.4000012762406"
+              EndConnector="203.285717849828,42.5176482385419"
               Start="0,0"
-              End="0,41.9000012762406">
+              End="203.285717849828,35.0176482385419">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41.9000012762406" />
+                    End="0,17.2588241192709" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.2588241192709"
+                    Point2="0,21.2588241192709"
+                    Point3="4,21.2588241192709" />
+                  <mssgle:LineSegment
+                    End="199.285717849828,21.2588241192709" />
+                  <mssgle:CubicBezierSegment
+                    Point1="199.285717849828,21.2588241192709"
+                    Point2="203.285717849828,21.2588241192709"
+                    Point3="203.285717849828,25.2588241192709" />
+                  <mssgle:LineSegment
+                    End="203.285717849828,35.0176482385419" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2472,79 +2519,53 @@ where [refTable].[ProductID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="204.8,41.6"
-          Id="Package\Data Flow Task\Integration for DimProduct"
-          TopLeft="610.000010388238,417.529417620398" />
+        <AnnotationLayout
+          Text="Join Category Information to Products &#xD;&#xA;(All information will be stored within DimProduct in the DW)"
+          ParentId="Package\ELT Data Flow"
+          FontInfo="{assembly:Null}"
+          Size="347.2,60"
+          Id="96732672-6489-452b-8b03-d57a0b0ed400"
+          TopLeft="643.571439531384,234.764709174839" />
+        <AnnotationLayout
+          Text="Send new rows (no match output) directly to the DW.&#xD;&#xA;Send existing rows to the integration table for further processing by the SCD SQL scripts."
+          ParentId="Package\ELT Data Flow"
+          FontInfo="{assembly:Null}"
+          Size="334.4,72"
+          Id="d94017e2-f0a8-4faa-be7f-5f14b208e6d3"
+          TopLeft="162.857145630584,307.411769017216" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
-          TopLeft="512.504769969635,367.36471045108">
+          Id="Package\ELT Data Flow.Paths[Lookup Match Output]"
+          TopLeft="582.438103899015,367.36471045108">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-197.533337165061,55.5176484208618"
+              EndConnector="184.247621699417,49.4000012762402"
               Start="0,0"
-              End="-197.533337165061,48.0176484208618">
+              End="184.247621699417,41.9000012762402">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.6729417327156" />
+                    End="0,16.1745459757512" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18.6729417327156"
-                    Point2="0,22.6729417327156"
-                    Point3="-4,22.6729417327156" />
+                    Point1="0,16.1745459757512"
+                    Point2="0,20.1745459757512"
+                    Point3="4,20.1745459757512" />
                   <mssgle:LineSegment
-                    End="-193.533337165061,22.6729417327156" />
+                    End="180.247621699417,20.1745459757512" />
                   <mssgle:CubicBezierSegment
-                    Point1="-193.533337165061,22.6729417327156"
-                    Point2="-197.533337165061,22.6729417327156"
-                    Point3="-197.533337165061,26.6729417327156" />
+                    Point1="180.247621699417,20.1745459757512"
+                    Point2="184.247621699417,20.1745459757512"
+                    Point3="184.247621699417,24.1745459757512" />
                   <mssgle:LineSegment
-                    End="-197.533337165061,48.0176484208618" />
+                    End="184.247621699417,41.9000012762402" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-154.57305530128,27.6729417327156,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup Match Output]"
-          TopLeft="547.438103302969,367.36471045108">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="164.961907085269,50.1647071693183"
-              Start="0,0"
-              End="164.961907085269,42.6647071693183">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.4868454453719" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.4868454453719"
-                    Point2="0,20.4868454453719"
-                    Point3="4,20.4868454453719" />
-                  <mssgle:LineSegment
-                    End="160.961907085269,20.4868454453719" />
-                  <mssgle:CubicBezierSegment
-                    Point1="160.961907085269,20.4868454453719"
-                    Point2="164.961907085269,20.4868454453719"
-                    Point3="164.961907085269,24.4868454453719" />
-                  <mssgle:LineSegment
-                    End="164.961907085269,42.6647071693183" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="34.2895668238847,25.4868454453719,96.3827734375,11.609375"
+              BoundingBox="43.9324241309584,25.1745459757512,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2552,38 +2573,12 @@ where [refTable].[ProductID] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Products">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Categoires">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Lookup">
+    design-time-name="Package\ELT Data Flow\Lookup">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2593,7 +2588,7 @@ where [refTable].[ProductID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2601,7 +2596,7 @@ where [refTable].[ProductID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\DimProduct">
+    design-time-name="Package\ELT Data Flow\DimProduct">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2614,7 +2609,33 @@ where [refTable].[ProductID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Integration for DimProduct">
+    design-time-name="Package\ELT Data Flow\Products">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ELT Data Flow\Integration for DimProduct">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ELT Data Flow\Categoires">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

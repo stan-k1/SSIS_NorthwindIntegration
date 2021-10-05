@@ -7,7 +7,10 @@ Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "IntegrationExperiment", "In
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL Scripts Reference", "SQL Scripts Reference", "{78551B95-C61A-497A-A8EB-A953EAC29C22}"
 	ProjectSection(SolutionItems) = preProject
-		ProcutName_SCD_Type1.sql = ProcutName_SCD_Type1.sql
+		!RUN_ME!_DatabaseCreationScript.sql = !RUN_ME!_DatabaseCreationScript.sql
+		ChangesToTestSCD_Script.sql = ChangesToTestSCD_Script.sql
+		ProductName_SCD_Type1.sql = ProductName_SCD_Type1.sql
+		ProductUnitPrice_SCD_Type2.sql = ProductUnitPrice_SCD_Type2.sql
 	EndProjectSection
 EndProject
 Global
