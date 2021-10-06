@@ -11,8 +11,8 @@
   DTS:LocaleID="1032"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{AFB23189-D77A-44BA-AC96-EC2AB098AD32}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{929D357B-3F44-4B75-B954-42C958C87AE4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -1656,13 +1656,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Insert Last Row"
+      DTS:refId="Package\Update Audit Table"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
       DTS:DTSID="{C1EA145F-24F0-42FB-9745-B0256B9A7FB1}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Insert Last Row"
+      DTS:ObjectName="Update Audit Table"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
@@ -1689,7 +1689,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       DTS:From="Package\Data Flow Task"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\Insert Last Row" />
+      DTS:To="Package\Update Audit Table" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1708,23 +1708,23 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           Id="Package\Data Flow Task"
           TopLeft="459.071436295704,134.735295930123" />
         <NodeLayout
-          Size="152,41.6"
-          Id="Package\Insert Last Row"
-          TopLeft="460.714293560204,221.000003099441" />
+          Size="168.8,41.6"
+          Id="Package\Update Audit Table"
+          TopLeft="442.857150398956,220.235297206364" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="535.492864927954,176.335295930123">
+          TopLeft="530.76429334733,176.335295930123">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,44.6647071693183"
+              EndConnector="0,43.9000012762406"
               Start="0,0"
-              End="0,37.1647071693183">
+              End="0,36.4000012762406">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.1647071693183" />
+                    End="0,36.4000012762406" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1742,6 +1742,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="158.4,41.6"
+          Id="Package\Data Flow Task\Get Last OrderID"
+          TopLeft="136.857145545434,155.764708080919" />
+        <NodeLayout
           Size="120,41.6"
           Id="Package\Data Flow Task\Multicast"
           TopLeft="482.857151080151,155.235296294764" />
@@ -1749,10 +1753,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           Size="218.4,41.6"
           Id="Package\Data Flow Task\Save Last OrderID to Variable"
           TopLeft="110.571430846136,271.941180256411" />
-        <NodeLayout
-          Size="158.4,41.6"
-          Id="Package\Data Flow Task\Get Last OrderID"
-          TopLeft="136.857145545434,155.764708080919" />
         <NodeLayout
           Size="124.8,41.6"
           Id="Package\Data Flow Task\FactOrder"
@@ -1833,14 +1833,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,57.8117661000948"
+              EndConnector="0,57.8117661000953"
               Start="0,0"
-              End="0,50.3117661000948">
+              End="0,50.3117661000953">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,50.3117661000948" />
+                    End="0,50.3117661000953" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

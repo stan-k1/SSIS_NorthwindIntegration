@@ -26,3 +26,6 @@ CREATE TABLE [dbo].[Audit](
     Username nvarchar(64) NULL
 ) ON [PRIMARY]
 GO
+
+INSERT INTO Audit (ProcessedTable, LastRowKey)
+VALUES ('FactOrder', 0)
