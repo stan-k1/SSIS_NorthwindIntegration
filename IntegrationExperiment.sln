@@ -6,11 +6,23 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "IntegrationExperiment", "IntegrationExperiment\IntegrationExperiment.dtproj", "{EC7BFCAB-BCB6-407D-A8AF-188AA2A99C1F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL Scripts Reference", "SQL Scripts Reference", "{78551B95-C61A-497A-A8EB-A953EAC29C22}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts Used In Tasks", "Scripts Used In Tasks", "{0597BE13-E467-47F8-9E06-3C18E65FC1A4}"
 	ProjectSection(SolutionItems) = preProject
-		!RUN_ME!_DatabaseCreationScript.sql = !RUN_ME!_DatabaseCreationScript.sql
-		ChangesToTestSCD_Script.sql = ChangesToTestSCD_Script.sql
+		Orders_ReadQuerry_For_FactOrder.sql = Orders_ReadQuerry_For_FactOrder.sql
 		ProductName_SCD_Type1.sql = ProductName_SCD_Type1.sql
 		ProductUnitPrice_SCD_Type2.sql = ProductUnitPrice_SCD_Type2.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "!RUNFIRST! Database Creation Scripts", "!RUNFIRST! Database Creation Scripts", "{61203B88-60E9-45BE-B725-9D2CAC61A316}"
+	ProjectSection(SolutionItems) = preProject
+		00_DimProduct_and_Database_CreationScript.sql = 00_DimProduct_and_Database_CreationScript.sql
+		01_FactOrder_and_Audit_CreationScriptsql.sql = 01_FactOrder_and_Audit_CreationScriptsql.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Suggested Scripts For Testing", "Suggested Scripts For Testing", "{7E375B90-8F35-48D8-988E-FE186E2DB548}"
+	ProjectSection(SolutionItems) = preProject
+		ChangesToTestSCD_Script.sql = ChangesToTestSCD_Script.sql
 	EndProjectSection
 EndProject
 Global
@@ -23,6 +35,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0597BE13-E467-47F8-9E06-3C18E65FC1A4} = {78551B95-C61A-497A-A8EB-A953EAC29C22}
+		{61203B88-60E9-45BE-B725-9D2CAC61A316} = {78551B95-C61A-497A-A8EB-A953EAC29C22}
+		{7E375B90-8F35-48D8-988E-FE186E2DB548} = {78551B95-C61A-497A-A8EB-A953EAC29C22}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6966FE34-A404-4C8D-B15B-449E1012D2E3}

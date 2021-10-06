@@ -11,36 +11,10 @@
   DTS:LocaleID="1032"
   DTS:ObjectName="DimProduct"
   DTS:PackageType="5"
-  DTS:VersionBuild="54"
-  DTS:VersionGUID="{963CE818-56D8-4C4E-8920-45CD5491F949}">
+  DTS:VersionBuild="56"
+  DTS:VersionGUID="{F0D251B5-FDD9-4F4E-A95C-F2F4148D6640}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[localhost.IntegrationNW]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{5FE70369-4464-4C85-9310-48876A323A39}"
-      DTS:ObjectName="localhost.IntegrationNW">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=IntegrationNW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[localhost.Northwind]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{1EDF4981-35B4-431D-A94A-035CBDCD1074}"
-      DTS:ObjectName="localhost.Northwind">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=Northwind;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -108,8 +82,8 @@
               <connections>
                 <connection
                   refId="Package\ELT Data Flow\Categoires.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.Northwind]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.Northwind]"
+                  connectionManagerID="{1EDF4981-35B4-431D-A94A-035CBDCD1074}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.Northwind]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -279,8 +253,8 @@
               <connections>
                 <connection
                   refId="Package\ELT Data Flow\DimProduct.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.IntegrationNW]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.IntegrationNW]"
+                  connectionManagerID="{5FE70369-4464-4C85-9310-48876A323A39}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.IntegrationNW]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -517,8 +491,8 @@
               <connections>
                 <connection
                   refId="Package\ELT Data Flow\Integration for DimProduct.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.IntegrationNW]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.IntegrationNW]"
+                  connectionManagerID="{5FE70369-4464-4C85-9310-48876A323A39}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.IntegrationNW]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -766,8 +740,8 @@ where [refTable].[ProductID] = ?</property>
               <connections>
                 <connection
                   refId="Package\ELT Data Flow\Lookup.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.IntegrationNW]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.IntegrationNW]"
+                  connectionManagerID="{5FE70369-4464-4C85-9310-48876A323A39}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.IntegrationNW]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -1364,8 +1338,8 @@ where [refTable].[ProductID] = ?</property>
               <connections>
                 <connection
                   refId="Package\ELT Data Flow\Products.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.Northwind]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.Northwind]"
+                  connectionManagerID="{1EDF4981-35B4-431D-A94A-035CBDCD1074}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.Northwind]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2212,6 +2186,18 @@ where [refTable].[ProductID] = ?</property>
           Size="146.4,41.6"
           Id="Package\ELT Data Flow"
           TopLeft="407.142864076459,157.529413973997" />
+        <NodeLayout
+          Size="204.8,41.6"
+          Id="Package\Truncate Integration Table"
+          TopLeft="369.285720574612,453.470594595048" />
+        <NodeLayout
+          Size="248,41.6"
+          Id="Package\Update SCD (ProductName, Type 1)"
+          TopLeft="350.714291686914,257.705885967169" />
+        <NodeLayout
+          Size="226.4,41.6"
+          Id="Package\Update SCD (UnitPrice, Type 2)"
+          TopLeft="357.857148951414,354.058828494953" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="477.528577881687,199.129413973997">
@@ -2226,28 +2212,6 @@ where [refTable].[ProductID] = ?</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,51.0764719931727" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="471.371434763013,395.658828494953">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,57.8117661000953"
-              Start="0,0"
-              End="0,50.3117661000953">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,50.3117661000953" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2278,23 +2242,33 @@ where [refTable].[ProductID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="226.4,41.6"
-          Id="Package\Update SCD (UnitPrice, Type 2)"
-          TopLeft="357.857148951414,354.058828494953" />
-        <NodeLayout
-          Size="248,41.6"
-          Id="Package\Update SCD (ProductName, Type 1)"
-          TopLeft="350.714291686914,257.705885967169" />
-        <NodeLayout
-          Size="204.8,41.6"
-          Id="Package\Truncate Integration Table"
-          TopLeft="369.285720574612,453.470594595048" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="471.371434763013,395.658828494953">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.8117661000953"
+              Start="0,0"
+              End="0,50.3117661000953">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.3117661000953" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <AnnotationLayout
-          Text="Don't forget to create the database and tables before running this package!&#xD;&#xA;See the SQL Scripts Reference folder for the creation script file."
+          Text="Don't forget to create the database and tables before running this package!&#xA;See the SQL Scripts Reference folder for the creation script file."
           ParentId="Package"
           FontInfo="{assembly:Null}"
-          Size="428.8,60"
+          Size="428.8,56"
           Id="35fe1bba-40e7-4161-9ccc-25e57965bc74"
           TopLeft="573.571438339292,144.529413791676" />
       </GraphLayout>
@@ -2368,7 +2342,9 @@ where [refTable].[ProductID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2390,7 +2366,9 @@ where [refTable].[ProductID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2412,7 +2390,9 @@ where [refTable].[ProductID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2452,88 +2432,6 @@ where [refTable].[ProductID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\ELT Data Flow.Paths[Sort Output1]"
-          TopLeft="740.914297051332,182.305884326288">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-155.133336143266,52.4588248485514"
-              Start="0,0"
-              End="-155.133336143266,44.9588248485514">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27.0914498492634" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,27.0914498492634"
-                    Point2="0,31.0914498492634"
-                    Point3="-4,31.0914498492634" />
-                  <mssgle:LineSegment
-                    End="-151.133336143266,31.0914498492634" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-151.133336143266,31.0914498492634"
-                    Point2="-155.133336143266,31.0914498492634"
-                    Point3="-155.133336143266,35.0914498492634" />
-                  <mssgle:LineSegment
-                    End="-155.133336143266,44.9588248485514" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\ELT Data Flow.Paths[Sort Output]"
-          TopLeft="362.22857639157,192.247060936298">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="203.285717849828,42.5176482385419"
-              Start="0,0"
-              End="203.285717849828,35.0176482385419">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,17.2588241192709" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17.2588241192709"
-                    Point2="0,21.2588241192709"
-                    Point3="4,21.2588241192709" />
-                  <mssgle:LineSegment
-                    End="199.285717849828,21.2588241192709" />
-                  <mssgle:CubicBezierSegment
-                    Point1="199.285717849828,21.2588241192709"
-                    Point2="203.285717849828,21.2588241192709"
-                    Point3="203.285717849828,25.2588241192709" />
-                  <mssgle:LineSegment
-                    End="203.285717849828,35.0176482385419" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <AnnotationLayout
-          Text="Join Category Information to Products &#xD;&#xA;(All information will be stored within DimProduct in the DW)"
-          ParentId="Package\ELT Data Flow"
-          FontInfo="{assembly:Null}"
-          Size="347.2,60"
-          Id="96732672-6489-452b-8b03-d57a0b0ed400"
-          TopLeft="643.571439531384,234.764709174839" />
-        <AnnotationLayout
-          Text="Send new rows (no match output) directly to the DW.&#xD;&#xA;Send existing rows to the integration table for further processing by the SCD SQL scripts."
-          ParentId="Package\ELT Data Flow"
-          FontInfo="{assembly:Null}"
-          Size="334.4,72"
-          Id="d94017e2-f0a8-4faa-be7f-5f14b208e6d3"
-          TopLeft="162.857145630584,307.411769017216" />
-        <EdgeLayout
           Id="Package\ELT Data Flow.Paths[Lookup Match Output]"
           TopLeft="582.438103899015,367.36471045108">
           <EdgeLayout.Curve>
@@ -2569,6 +2467,92 @@ where [refTable].[ProductID] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ELT Data Flow.Paths[Sort Output1]"
+          TopLeft="740.914297051332,182.305884326288">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-155.133336143266,52.4588248485514"
+              Start="0,0"
+              End="-155.133336143266,44.9588248485514">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.0914498492634" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.0914498492634"
+                    Point2="0,31.0914498492634"
+                    Point3="-4,31.0914498492634" />
+                  <mssgle:LineSegment
+                    End="-151.133336143266,31.0914498492634" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-151.133336143266,31.0914498492634"
+                    Point2="-155.133336143266,31.0914498492634"
+                    Point3="-155.133336143266,35.0914498492634" />
+                  <mssgle:LineSegment
+                    End="-155.133336143266,44.9588248485514" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ELT Data Flow.Paths[Sort Output]"
+          TopLeft="362.22857639157,192.247060936298">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="203.285717849828,42.5176482385419"
+              Start="0,0"
+              End="203.285717849828,35.0176482385419">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.2588241192709" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.2588241192709"
+                    Point2="0,21.2588241192709"
+                    Point3="4,21.2588241192709" />
+                  <mssgle:LineSegment
+                    End="199.285717849828,21.2588241192709" />
+                  <mssgle:CubicBezierSegment
+                    Point1="199.285717849828,21.2588241192709"
+                    Point2="203.285717849828,21.2588241192709"
+                    Point3="203.285717849828,25.2588241192709" />
+                  <mssgle:LineSegment
+                    End="203.285717849828,35.0176482385419" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Join Category Information to Products &#xA;(All information will be stored within DimProduct in the DW)"
+          ParentId="Package\ELT Data Flow"
+          FontInfo="{assembly:Null}"
+          Size="347.2,NaN"
+          Id="96732672-6489-452b-8b03-d57a0b0ed400"
+          TopLeft="643.571439531384,234.764709174839" />
+        <AnnotationLayout
+          Text="Send new rows (no match output) directly to the DW.&#xA;Send existing rows to the integration table for further processing by the SCD SQL scripts."
+          ParentId="Package\ELT Data Flow"
+          FontInfo="{assembly:Null}"
+          Size="334.4,NaN"
+          Id="d94017e2-f0a8-4faa-be7f-5f14b208e6d3"
+          TopLeft="162.857145630584,307.411769017216" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
